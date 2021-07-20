@@ -5,11 +5,10 @@ import com.example.user.service.controller.assembler.UserAssembler;
 import com.example.user.service.controller.model.UserModel;
 import com.example.user.service.dto.UserDto;
 import com.example.user.service.service.UserService;
-import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
@@ -40,7 +39,7 @@ public class UserController implements UserApi {
 
     @Override
     public ResponseEntity<Void> deleteUser(String email) {
-         userService.deleteUser(email);
-         return ResponseEntity.noContent().build();
+        userService.deleteUser(email);
+        return ResponseEntity.noContent().build();
     }
 }

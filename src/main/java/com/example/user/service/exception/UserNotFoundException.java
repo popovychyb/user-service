@@ -2,7 +2,7 @@ package com.example.user.service.exception;
 
 import com.example.user.service.model.enums.ErrorType;
 
-public class UserNotFoundException extends ServiceException{
+public class UserNotFoundException extends ServiceException {
 
     private static final String DEFAULT_MESSAGE = "User is not found";
 

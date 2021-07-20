@@ -2,8 +2,8 @@ package com.example.user.service.controller;
 
 import com.example.user.service.exception.ServiceException;
 import com.example.user.service.exception.UserNotFoundException;
-import com.example.user.service.model.enums.ErrorType;
 import com.example.user.service.model.Error;
+import com.example.user.service.model.enums.ErrorType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.lang.invoke.MethodHandle;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;

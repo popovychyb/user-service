@@ -16,28 +16,28 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public UserDto getUser(String email){
+    public UserDto getUser(String email) {
         log.info("getUser by email {}", email);
         User user = userRepository.getUser(email);
         return mapUserToUserDto(user);
     }
 
     @Override
-    public UserDto createUser(UserDto userDto){
+    public UserDto createUser(UserDto userDto) {
         User user = mapUserDtoToUser(userDto);
         user = userRepository.createUser(user);
         return mapUserToUserDto(user);
     }
 
     @Override
-    public UserDto updateUser(String email, UserDto userDto){
+    public UserDto updateUser(String email, UserDto userDto) {
         User user = mapUserDtoToUser(userDto);
         user = userRepository.updateUser(email, user);
         return mapUserToUserDto(user);
     }
 
     @Override
-    public void deleteUser(String email){
+    public void deleteUser(String email) {
         userRepository.deleteUser(email);
     }
 

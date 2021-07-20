@@ -23,14 +23,14 @@ public class SwaggerConfig {
     public Docket apiV1() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("api-v1")
-        .select()
-        .apis(RequestHandlerSelectors.basePackage("com.example.user.service.controller"))
-        .paths(PathSelectors.ant("/api/v1/**"))
-        .build();
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.example.user.service.controller"))
+                .paths(PathSelectors.ant("/api/v1/**"))
+                .build();
     }
 
     @Bean
-    public LinkDiscoverers discoverers(){
+    public LinkDiscoverers discoverers() {
         List<LinkDiscoverer> plugins = new ArrayList<>();
         plugins.add(new CollectionJsonLinkDiscoverer());
         return new LinkDiscoverers(SimplePluginRegistry.create(plugins));

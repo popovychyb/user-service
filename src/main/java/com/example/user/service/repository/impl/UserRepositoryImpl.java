@@ -39,7 +39,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public void deleteUser(String email){
+    public void deleteUser(String email) {
         list.removeIf(u -> u.getEmail().equals(email));
     }
 }
