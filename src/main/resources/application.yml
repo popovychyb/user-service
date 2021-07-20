@@ -6,3 +6,7 @@ management:
   endpoint:
     health:
       show-details: always
+
+spring:
+  jpa:
+    show-sql: true

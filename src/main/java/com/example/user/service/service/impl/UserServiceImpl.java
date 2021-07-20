@@ -1,6 +1,7 @@
 package com.example.user.service.service.impl;
 
 import com.example.user.service.dto.UserDto;
+import com.example.user.service.exception.UserNotFoundException;
 import com.example.user.service.model.User;
 import com.example.user.service.repository.UserRepository;
 import com.example.user.service.service.UserService;
@@ -18,27 +19,36 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getUser(String email) {
         log.info("getUser by email {}", email);
-        User user = userRepository.getUser(email);
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(UserNotFoundException::new);
         return mapUserToUserDto(user);
     }
 
     @Override
     public UserDto createUser(UserDto userDto) {
+        log.info("creating user in database {}", userDto);
         User user = mapUserDtoToUser(userDto);
-        user = userRepository.createUser(user);
+        user = userRepository.save(user);
         return mapUserToUserDto(user);
     }
 
     @Override
     public UserDto updateUser(String email, UserDto userDto) {
+        log.info("updating User in database {}", userDto);
         User user = mapUserDtoToUser(userDto);
-        user = userRepository.updateUser(email, user);
+        if (!userRepository.existsByEmail(email)) {
+            throw new UserNotFoundException();
+        }
+        user = userRepository.save(user);
         return mapUserToUserDto(user);
     }
 
     @Override
     public void deleteUser(String email) {
-        userRepository.deleteUser(email);
+        log.info("deleting user by email {}", email);
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(UserNotFoundException::new);
+        userRepository.delete(user);
     }
 
     private UserDto mapUserToUserDto(User user) {
