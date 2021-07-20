@@ -27,7 +27,7 @@ public class ErrorHandlingController {
         return ex.getBindingResult()
                 .getAllErrors()
                 .stream()
-                .map(arr -> new Error(arr.getDefaultMessage(), ErrorType.VALIDATION_ERROR_TYPE, LocalDateTime.now()))
+                .map(err -> new Error(err.getDefaultMessage(), ErrorType.VALIDATION_ERROR_TYPE, LocalDateTime.now()))
                 .collect(Collectors.toList());
     }
 
